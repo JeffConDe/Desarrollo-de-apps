@@ -1,46 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action=""></form>
-</body>
-</html><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>To Do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List - Minimalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Configuración General */
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            color: #333;
+        }
+
+        .notebook-page {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            min-height: 500px;
+        }
+
+        /* Título estilo "Handwritten" */
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        /* Área de entrada */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        /* Estilo de la Lista */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee; /* La línea horizontal de la libreta */
+            font-size: 1.1rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* El círculo punteado (Checkbox) */
+        .circle {
+            width: 18px;
+            height: 18px;
+            border: 2px dotted #ccc;
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .circle:hover {
+            border-color: #333;
+        }
+
+        /* Animación simple al agregar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <h2>To Do</h2>
+    <div class="notebook-page">
+        <h2>to do list</h2>
 
-    <input type="text" id="actividad" placeholder="Escribe una actividad">
-    <button onclick="agregarActividad()">ADD</button>
+        <div class="input-group">
+            <input type="text" id="actividad" placeholder="Escribe una tarea...">
+            <button onclick="agregarActividad()">ADD</button>
+        </div>
 
-    <ul id="lista"></ul>
+        <ul id="lista">
+            </ul>
+    </div>
 
     <script>
         function agregarActividad() {
-            // Obtener el valor del input
-            let texto = document.getElementById("actividad").value;
+            let input = document.getElementById("actividad");
+            let texto = input.value;
 
-            if (texto === "") return;
+            if (texto.trim() === "") return;
 
-            // Crear un elemento <li>
+            let lista = document.getElementById("lista");
+            
+            // Creamos el elemento li
             let li = document.createElement("li");
-            li.textContent = texto;
 
-            // Agregar el <li> a la lista
-            document.getElementById("lista").appendChild(li);
+            // Creamos el círculo punteado
+            let divCircle = document.createElement("div");
+            divCircle.className = "circle";
+            
+            // Evento para "marcar" como hecho (opcional)
+            divCircle.onclick = function() {
+                li.style.textDecoration = li.style.textDecoration === 'line-through' ? 'none' : 'line-through';
+                li.style.opacity = li.style.opacity === '0.5' ? '1' : '0.5';
+            };
 
-            // Limpiar input
-            document.getElementById("actividad").value = "";
+            // Creamos el nodo de texto
+            let spanTexto = document.createElement("span");
+            spanTexto.textContent = texto;
+
+            // Ensamblamos el item
+            li.appendChild(divCircle);
+            li.appendChild(spanTexto);
+            lista.appendChild(li);
+
+            // Limpiamos el input
+            input.value = "";
         }
+
+        // Permitir agregar con la tecla Enter
+        document.getElementById("actividad").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                agregarActividad();
+            }
+        });
     </script>
 
 </body>
