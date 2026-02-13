@@ -9,4 +9,39 @@
 <body>
     <form action=""></form>
 </body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do</title>
+</head>
+<body>
+
+    <h2>To Do</h2>
+
+    <input type="text" id="actividad" placeholder="Escribe una actividad">
+    <button onclick="agregarActividad()">ADD</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+        function agregarActividad() {
+            // Obtener el valor del input
+            let texto = document.getElementById("actividad").value;
+
+            if (texto === "") return;
+
+            // Crear un elemento <li>
+            let li = document.createElement("li");
+            li.textContent = texto;
+
+            // Agregar el <li> a la lista
+            document.getElementById("lista").appendChild(li);
+
+            // Limpiar input
+            document.getElementById("actividad").value = "";
+        }
+    </script>
+
+</body>
 </html>
