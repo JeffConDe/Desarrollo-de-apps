@@ -136,11 +136,7 @@
             let divCircle = document.createElement("div");
             divCircle.className = "circle";
             
-            // Evento para "marcar" como hecho (opcional)
-            divCircle.onclick = function() {
-                li.style.textDecoration = li.style.textDecoration === 'line-through' ? 'none' : 'line-through';
-                li.style.opacity = li.style.opacity === '0.5' ? '1' : '0.5';
-            };
+
 
             // Creamos el nodo de texto
             let spanTexto = document.createElement("span");
