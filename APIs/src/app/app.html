@@ -1,0 +1,13 @@
+<div class="notebook-page">
+  <h2>Pokédex</h2>
+  <ul>
+    @for (poke of pokemonList(); track poke.name) {
+      <li>
+        <div class="circle"></div>
+        <span class="capitalize">{{ poke.name }}</span>
+      </li>
+    } @empty {
+      <li>Cargando pokemones... </li>
+    }
+  </ul>
+</div>
