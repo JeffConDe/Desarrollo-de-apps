@@ -15,7 +15,9 @@ export class DataService {
     return this.http.get<any>(this.apiUrl).pipe(
       map(response =>
         response.results.map((pokemon: any) => {
-          const id = pokemon.url.split('/');
+          const urlParts = pokemon.url.split('/');
+          const id = urlParts[urlParts.length - 2];
+          
           return {
             name: pokemon.name,
             image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`

@@ -1,13 +1,33 @@
-<div class="notebook-page">
-  <h2>Pokédex</h2>
-  <ul>
-    @for (poke of pokemonList(); track poke.name) {
-      <li>
-        <div class="circle"></div>
-        <span class="capitalize">{{ poke.name }}</span>
-      </li>
-    } @empty {
-      <li>Cargando pokemones... </li>
-    }
-  </ul>
+<div class="min-h-screen bg-slate-100 py-10 flex justify-center">
+  
+  <div class="w-full max-w-md bg-white shadow-xl rounded-sm border-l-8 border-red-500 p-8 relative overflow-hidden">
+    
+    <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-100 pb-2">
+      Pokédex <span class="text-sm font-normal text-gray-400 font-mono">#001-020</span>
+    </h2>
+
+    <ul class="space-y-0">
+      @for (poke of pokemonList(); track poke.name) {
+        <li class="group flex items-center py-3 border-b border-blue-50 hover:bg-slate-50 transition-all cursor-pointer">
+          
+          <div class="w-4 h-4 border-2 border-red-300 rounded-full mr-4 group-hover:bg-red-400 transition-colors"></div>
+          
+          <div class="flex items-center gap-4">
+            <img [src]="poke.image" [alt]="poke.name" class="w-12 h-12 object-contain drop-shadow-md group-hover:scale-110 transition-transform">
+            <span class="capitalize text-xl text-gray-700 font-medium">{{ poke.name }}</span>
+          </div>
+
+        </li>
+      } @empty {
+        <li class="py-10 text-center text-gray-400 italic">
+          Buscando pokemones en la hierba alta... 🌿
+        </li>
+      }
+    </ul>
+
+    <div class="absolute inset-0 pointer-events-none opacity-10" 
+         style="background-image: linear-gradient(#3b82f6 1px, transparent 1px); background-size: 100% 3rem;">
+    </div>
+  </div>
+
 </div>
