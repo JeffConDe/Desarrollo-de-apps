@@ -1,0 +1,23 @@
+<div class="notebook-page">
+  <h2>Que haceres</h2>
+
+  <div class="input-group">
+    <input type="text" [(ngModel)]="tarea" placeholder="Escribe una tarea..." (keyup.enter)="agregar()">
+    <button (click)="agregar()">Agregar</button>
+  </div>
+
+  <ul>
+    @for (item of lista; track $index) {
+      <li>
+        <div class="circle"></div>
+        {{ item }}
+      </li>
+    } @empty {
+      <li style="color: #999; border: none;">No hay tareas hoy... </li>
+    }
+  </ul>
+</div>
+
+
+
+<h1>Carga de APIs</h1>  

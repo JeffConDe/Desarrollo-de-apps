@@ -1,0 +1,16 @@
+
+<router-outlet />
+
+
+<div class="p-6 bg-white shadow-lg border-l-4 border-red-500">
+  <ul>
+    @for (item of listaDatos(); track item.name) {
+      <li class="flex items-center gap-4 border-b py-2">
+        <img [src]="item.image" class="w-12 h-12">
+        <span class="capitalize">{{ item.name }}</span>
+      </li>
+    } @empty {
+      <li>Cargando...</li>
+    }
+  </ul>
+</div>

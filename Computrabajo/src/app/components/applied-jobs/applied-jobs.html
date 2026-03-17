@@ -1,0 +1,32 @@
+<h2 class="text-3xl text-white font-bold mb-6">
+  Trabajos aplicados
+</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+  <div
+  *ngFor="let job of appliedJobs"
+  class="bg-zinc-800 rounded-xl p-5 shadow-lg">
+
+    <h3 class="text-xl font-bold text-white">
+      {{job.title}}
+    </h3>
+
+    <p class="text-zinc-400">
+      {{job.company}}
+    </p>
+
+    <p class="text-green-400 font-semibold">
+      {{job.salary}}
+    </p>
+
+    <button
+    class="mt-4 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-white w-full">
+
+      Eliminar
+
+    </button>
+
+  </div>
+
+</div>

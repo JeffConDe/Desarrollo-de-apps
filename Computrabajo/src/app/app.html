@@ -1,0 +1,25 @@
+<header class="bg-black text-white flex justify-between items-center px-8 py-4 shadow-lg">
+
+  <h1 class="text-2xl font-bold text-red-500">
+    Computrabajo
+  </h1>
+
+  <nav class="flex gap-6 text-lg">
+
+    <a routerLink="/" class="hover:text-red-500 transition">
+      Trabajos
+    </a>
+
+    <a routerLink="/applied" class="hover:text-red-500 transition">
+      Aplicados
+    </a>
+
+  </nav>
+
+</header>
+
+<main class="bg-zinc-900 min-h-screen p-8">
+
+  <router-outlet></router-outlet>
+
+</main>

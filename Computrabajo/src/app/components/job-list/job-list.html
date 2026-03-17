@@ -1,0 +1,40 @@
+<h2 class="text-3xl text-white font-bold mb-6">
+  Ofertas de trabajo
+</h2>
+
+<div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+  <div 
+  *ngFor="let job of jobs"
+  class="bg-zinc-800 rounded-xl p-5 hover:scale-105 transition duration-300 shadow-lg">
+
+    <h3 class="text-xl font-bold text-white">
+      {{job.title}}
+    </h3>
+
+    <p class="text-zinc-400">
+      {{job.company}}
+    </p>
+
+    <p class="text-zinc-400">
+      {{job.location}}
+    </p>
+
+    <p class="text-green-400 font-semibold mt-2">
+      {{job.salary}}
+    </p>
+
+    <button
+      [routerLink]="['/job',job.id]"
+      class="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-white w-full transition">
+
+      Ver oferta
+
+    </button>
+
+    
+     
+
+  </div>
+
+</div>
